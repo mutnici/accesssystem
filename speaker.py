@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(SPEAKER_PIN, GPIO.OUT)
 
 # PWM starten
-pwm = GPIO.PWM(SPEAKER_PIN, 440)  # Frequenz: 440 Hz (Tonhöhe)
+pwm = GPIO.PWM(SPEAKER_PIN, 449)  # Frequenz: 449 Hz (Tonhöhe)
 pwm.start(50)  # Duty Cycle: 50% (Lautstärke)
 
 # Ton für 2 Sekunden abspielen
