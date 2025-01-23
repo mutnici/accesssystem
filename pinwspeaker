@@ -7,9 +7,9 @@ ROWS = [17, 27, 22, 23]  # Zeilen-Pins
 COLS = [5, 6, 13, 19]    # Spalten-Pins
 
 # GPIO-Konfiguration für den Lautsprecher
-SPEAKER_PIN = 12  # GPIO 18 für PWM
+SPEAKER_PIN = 12  
 
-# Erstellen Sie ein Layout für die Tastatur
+# Layout für die Tastatur
 KEYPAD = [
     ["D", "C", "B", "A"],  # Reihen 1 bis 4
     ["#", "9", "6", "3"],
@@ -18,7 +18,7 @@ KEYPAD = [
 ]
 
 # PIN zur Überprüfung
-CORRECT_PIN = "1234"  # Beispiel-PIN
+CORRECT_PIN = "1234"  #korrekter PIN
 entered_pin = ""
 
 # GPIO-Setup für den Lautsprecher
@@ -26,18 +26,19 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(SPEAKER_PIN, GPIO.OUT)
 
 # PWM-Instanz erstellen
-pwm = GPIO.PWM(SPEAKER_PIN, 440)  # Startfrequenz 440 Hz
+pwm = GPIO.PWM(SPEAKER_PIN, 440)  # 440 Hz
 
 # Funktion für Zugriff erlaubt (hoher Ton)
 def access_granted():
-    pwm.ChangeFrequency(880)  # Frequenz 880 Hz
+    pwm.ChangeFrequency(1000)  # 1kHz
     pwm.start(50)  # Lautstärke 50%
     time.sleep(1)  # 1 Sekunde Ton
     pwm.stop()
+   
 
 # Funktion für Zugriff verweigert (tiefer Ton)
 def access_denied():
-    pwm.ChangeFrequency(440)  # Frequenz 440 Hz
+    pwm.ChangeFrequency(200)  # Frequenz 440 Hz
     pwm.start(50)  # Lautstärke 50%
     time.sleep(1)  # 1 Sekunde Ton
     pwm.stop()
@@ -52,7 +53,7 @@ def process_key(key):
         else:
             print("Falscher PIN!")
             access_denied()  # Lautsprecher: Zugang verweigert
-        entered_pin = ""  # Zurücksetzen
+        entered_pin = ""  
     elif key == "*":  # "*" dient als Zurücksetzen
         entered_pin = ""
         print("Eingabe zurückgesetzt!")
