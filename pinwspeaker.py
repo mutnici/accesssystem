@@ -1,6 +1,9 @@
 from pad4pi import rpi_gpio
 import RPi.GPIO as GPIO
 import time
+import RPi.GPIO as GPIO
+from mfrc522 import SimpleMFRC522
+
 
 # GPIO-Konfiguration für die Tastatur
 ROWS = [17, 27, 22, 23]  # Zeilen-Pins

@@ -64,7 +64,96 @@ Dieses Projekt implementiert ein Zugangssystem basierend auf einem **Raspberry P
 
 ---
 
+# **Erklärung der angefügten Datein**
+## **RFID**
+- onlynfc.py ist nur für NFC-Überprüfung.
+- write.py ist für das Beschreiben der RFID-Chips.
+- read.py ist für das Auslesen der RFID-CHIPS
+## **PIN**
+- PIN.py ist nur für PIN-Überprüfung.
+- pinwspeaker.py ist für PIN-Überprüfung und Speaker Ausgabe. 
+- speaker.py ist Testcode für den Speaker. 
+## **Gesamter Code**
+- mainall.py ist der gesamte Code (Anleitung unten!).
+
+
+# **Anleitung zur Nutzung des Zugangssystems mit PIN und RFID**
+
+## **1. System starten**
+1. Verbinde alle Komponenten gemäß der Hardware-Konfiguration.
+2. Starte das Raspberry Pi und öffne ein Terminal.
+3. Navigiere zum Verzeichnis mit dem Skript:
+   ```sh
+   cd /pfad/zum/skript
+   ```
+4. Führe das Skript aus:
+   ```sh
+   python3 rfid_pin_access.py
+   ```
+
+---
+
+## **2. Zugangsmethode wählen**
+Nach dem Start wird folgende Auswahl angezeigt:
+   ```sh
+   echo "Wählen Sie die Zugangsmethode:"
+   echo "1 - RFID"
+   echo "2 - PIN"
+   read -p "Eingabe: " method
+   ```
+   
+Gib entweder **„1“** für den RFID-Zugang oder **„2“** für den PIN-Code ein und drücke **Enter**.
+
+---
+
+## **3. Zugang mit RFID**
+1. Falls RFID ausgewählt wurde, erscheint die Aufforderung:
+   ```sh
+   echo "Bitte RFID-Chip scannen..."
+   ```
+2. Halte einen RFID-Tag an den Leser.
+3. Falls der Chip registriert ist (z. B. "1701" für Haus 1), erscheint:
+   ```sh
+   echo "Eintritt zu Haus 1 erlaubt!"
+   echo "Zugang gewährt!"
+   ```
+   und das Programm beendet sich.
+4. Falls der Chip unbekannt ist, erscheint:
+   ```sh
+   echo "Unbekannter RFID-Chip! Bitte erneut versuchen."
+   echo "Zugang verweigert!"
+   ```
+   und es kann erneut versucht werden.
+
+---
+
+## **4. Zugang mit PIN-Code**
+1. Falls PIN gewählt wurde, erscheint:
+   ```sh
+   echo "Bitte geben Sie den PIN ein. Mit '#' bestätigen."
+   ```
+2. Gib den PIN über die Tastatur ein (z. B. **„1234#“** für den richtigen PIN).
+3. Falls der PIN korrekt ist:
+   ```sh
+   echo "Zugang gewährt!"
+   ```
+   und das Programm beendet sich.
+4. Falls der PIN falsch ist:
+   ```sh
+   echo "Falscher PIN! Bitte erneut versuchen."
+   echo "Zugang verweigert!"
+   ```
+   und es kann ein neuer PIN eingegeben werden.
+
+---
+
+## **5. Programm beenden**
+Falls das Programm manuell beendet werden soll, kann **Strg + C** im Terminal gedrückt werden.
+
+---
+
 ## **Zukunftserweiterungen**
 - Implementierung eines **Webinterfaces** zur Verwaltung von PINs und RFID-Daten.
 - Integration von **Cloud-Diensten** für Echtzeitüberwachung.
 - Hinzufügen eines Displays zur visuellen Anzeige von Statusmeldungen.
+
