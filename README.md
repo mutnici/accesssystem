@@ -45,36 +45,49 @@ Dieses Projekt implementiert ein Zugangssystem basierend auf einem **Raspberry P
 | RFID-Reader (RC522)  | SPI (MOSI, MISO, SCK, SS, IRQ) |
 
 ---
+# **Zuvor benötigte Einstellungen**
+## **1. Installation der benötigten Bibliotheken**
+Vor der Nutzung des Zugangssystems müssen einige Python-Bibliotheken installiert werden:
+```sh
+sudo apt update
+sudo apt install python3-pip
+pip3 install RPi.GPIO mfrc522 pad4pi
+```
 
-## **Software-Funktionen**
-1. **PIN-Eingabe**:
-   - Überprüft den eingegebenen Code mit einem vordefinierten PIN.
-2. **RFID-Verifizierung**:
-   - Liest die UID des RFID-Chips/Karte und vergleicht sie mit gespeicherten Werten.
-3. **Audiofeedback**:
-   - Hoher Ton für erfolgreiche Authentifizierung.
-   - Tiefer Ton für fehlerhafte Authentifizierung.
+Falls es Probleme mit `mfrc522` gibt, kann stattdessen folgendes verwendet werden:
+```sh
+pip3 install spidev
+```
+
+---
+
+## **2. SPI-Schnittstelle aktivieren**
+Der MFRC522 RFID-Leser kommuniziert über SPI. Um die SPI-Schnittstelle auf dem Raspberry Pi zu aktivieren, folge diesen Schritten:
+1. Öffne die Raspberry Pi Konfiguration:
+   ```sh
+   sudo raspi-config
+   ```
+2. Navigiere zu **Interfacing Options** → **SPI**
+3. Aktiviere SPI und bestätige mit **OK**
+4. Starte den Raspberry Pi neu:
+   ```sh
+   sudo reboot
+   ```
 
 ---
 
-## **Einsatzmöglichkeiten**
-- Zugangskontrolle für Türen.
-- Sichere Zutrittsberechtigungen für Büros, Schulen oder private Bereiche.
-- Kombination von PIN und RFID zur Erhöhung der Sicherheit.
-
----
 
 # **Erklärung der angefügten Dateien**
 ## **RFID**
-- onlynfc.py ist nur für NFC-Überprüfung.
-- write.py ist für das Beschreiben der RFID-Chips.
-- read.py ist für das Auslesen der RFID-CHIPS
+- *onlynfc.py* ist nur für NFC-Überprüfung.
+- *write.py* ist für das Beschreiben der RFID-Chips.
+- *read.py* ist für das Auslesen der RFID-CHIPS
 ## **PIN**
-- PIN.py ist nur für PIN-Überprüfung.
-- pinwspeaker.py ist für PIN-Überprüfung und Speaker Ausgabe. 
-- speaker.py ist Testcode für den Speaker. 
+- *PIN.py* ist nur für PIN-Überprüfung.
+- *pinwspeaker.py* ist für PIN-Überprüfung und Speaker Ausgabe. 
+- *speaker.py* ist Testcode für den Speaker. 
 ## **Gesamter Code**
-- mainall.py ist der gesamte Code (Anleitung unten!).
+- *mainall.py* ist der gesamte Code (Anleitung unten!).
 
 
 # **Anleitung zur Nutzung des Zugangssystems mit PIN und RFID**
@@ -144,8 +157,16 @@ Falls das Programm manuell beendet werden soll, kann **Strg + C** im Terminal ge
 
 ---
 
+## **Einsatzmöglichkeiten**
+- Zugangskontrolle für Türen.
+- Sichere Zutrittsberechtigungen für Büros, Schulen oder private Bereiche.
+- Kombination von PIN und RFID zur Erhöhung der Sicherheit.
+
+---
 ## **Zukunftserweiterungen**
 - Implementierung eines **Webinterfaces** zur Verwaltung von PINs und RFID-Daten.
 - Integration von **Cloud-Diensten** für Echtzeitüberwachung.
 - Hinzufügen eines Displays zur visuellen Anzeige von Statusmeldungen.
+
+
 
