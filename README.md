@@ -43,7 +43,7 @@ Dieses Projekt implementiert ein Zugangssystem basierend auf einem **Raspberry P
 | PIN-Tastatur (Zeilen)| GPIO 17, 27, 22, 23|
 | PIN-Tastatur (Spalten)| GPIO 5, 6, 13, 19 |
 | RFID-Reader (RC522)  | SPI (MOSI, MISO, SCK, SS, IRQ) |
-
+![Bild-PinOut](image.png)
 ---
 # **Zuvor benötigte Einstellungen**
 ## **1. Installation der benötigten Bibliotheken**
