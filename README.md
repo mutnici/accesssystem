@@ -64,7 +64,7 @@ Dieses Projekt implementiert ein Zugangssystem basierend auf einem **Raspberry P
 
 ---
 
-# **Erklärung der angefügten Datein**
+# **Erklärung der angefügten Dateien**
 ## **RFID**
 - onlynfc.py ist nur für NFC-Überprüfung.
 - write.py ist für das Beschreiben der RFID-Chips.
@@ -82,14 +82,6 @@ Dieses Projekt implementiert ein Zugangssystem basierend auf einem **Raspberry P
 ## **1. System starten**
 1. Verbinde alle Komponenten gemäß der Hardware-Konfiguration.
 2. Starte das Raspberry Pi und öffne ein Terminal.
-3. Navigiere zum Verzeichnis mit dem Skript:
-   ```sh
-   cd /pfad/zum/skript
-   ```
-4. Führe das Skript aus:
-   ```sh
-   python3 rfid_pin_access.py
-   ```
 
 ---
 
