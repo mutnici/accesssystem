@@ -39,10 +39,12 @@ Dieses Projekt implementiert ein Zugangssystem basierend auf einem **Raspberry P
 ## **GPIO-Belegung**
 | **Komponente**       | **GPIO-Pin**       |
 |----------------------|--------------------|
-| Lautsprecher (PWM)   | GPIO 18            |
+| Lautsprecher (PWM)   | GPIO 12            |
 | PIN-Tastatur (Zeilen)| GPIO 17, 27, 22, 23|
 | PIN-Tastatur (Spalten)| GPIO 5, 6, 13, 19 |
-| RFID-Reader (RC522)  | SPI (MOSI, MISO, SCK, SS, IRQ) |
+| RFID-Reader (RC522)  | SPI (MOSI, MISO, SCK, SDA, RST) |
+
+---
 ![Bild-PinOut](image.png)
 ---
 # **Zuvor benötigte Einstellungen**
